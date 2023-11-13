@@ -79,11 +79,11 @@ with mp_hands.Hands(
     cv2.rectangle(image, (0,440), (640,480), (0,0,0), -1)
     cv2.putText(image, fingerFound, (20, 470), cv2.FONT_HERSHEY_DUPLEX, 1, (255,255,255), 2)
     # Append text finger count to image
-    cv2.rectangle(image, (0,0), (100,100), (0,0,0), -1)
+    cv2.rectangle(image, (0,0), (150,100), (0,0,0), -1)
     cv2.putText(image, str(fingerCount), (20,80), cv2.FONT_HERSHEY_DUPLEX, 3, (0,255,0), 10)
     cv2.imshow('FingerCounting Apps', image)
     try:
-      with Serial('COM10', 115200, timeout = 1) as ser:
+      with Serial('COM3', 115200, timeout = 1) as ser:
           ser.setDTR(True)
           ser.setRTS(False)
           ser.write(str(fingerCount).encode())
